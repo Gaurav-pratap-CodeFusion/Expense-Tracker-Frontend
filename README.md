@@ -1,36 +1,146 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Expense Tracker Frontend
 
-## Getting Started
+A full-stack Expense Tracker application frontend built using Next.js, TypeScript, Tailwind CSS, Axios, and JWT Authentication.
 
-First, run the development server:
+---
+
+# Features
+
+## Authentication
+
+- User Register
+- User Login
+- JWT Token Authentication
+- Logout Functionality
+
+---
+
+# User Features
+
+- Add Expense
+- View My Expenses
+- View Expense Details
+- Update Expense
+- Delete Expense
+- Comment on Expenses
+- View Admin Comments
+
+---
+
+# Admin Features
+
+- View Pending Expenses
+- Approve Expense
+- Reject Expense with Reason
+- View All Expenses
+- Comment on User Expenses
+
+---
+
+# Tech Stack
+
+## Frontend
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Axios
+- React Hot Toast
+
+## Backend
+
+- Spring Boot
+- Spring Security
+- JWT Authentication
+- Spring Data JPA
+- SQL Server
+
+---
+
+# Project Structure
+
+```bash
+src
+│
+├── app
+├── components
+├── services
+├── types
+└── middleware.ts
+```
+
+---
+
+# API Integration
+
+The frontend is connected with Spring Boot REST APIs using Axios.
+
+JWT token is automatically attached in every protected API request using Axios Interceptors.
+
+---
+
+# Authentication Flow
+
+1. User logs in
+2. Backend returns JWT token
+3. Token stored in localStorage
+4. Axios interceptor attaches token in Authorization header
+5. Backend validates JWT token using JwtFilter
+
+---
+
+# Installation
+
+## Clone Repository
+
+```bash
+git clone <repository-url>
+```
+
+---
+
+# Install Dependencies
+
+```bash
+npm install
+```
+
+---
+
+# Run Project
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Frontend URL
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+http://localhost:3000
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+# Backend URL
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+http://localhost:8080
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+# Environment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Create `.env.local`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8080/api
+```
+
+---
+
+# Author
+
+Gaurav Pratap
