@@ -79,13 +79,12 @@ export default function PendingPage() {
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl font-semibold">{expense.name}</h2>
               <span
-                className={`text-xs px-3 py-1 rounded-full font-medium ${
-                  expense.status === "APPROVED"
+                className={`text-xs px-3 py-1 rounded-full font-medium ${expense.status === "APPROVED"
                     ? "bg-green-100 text-green-700"
                     : expense.status === "REJECTED"
-                    ? "bg-red-100 text-red-700"
-                    : "bg-yellow-100 text-yellow-700"
-                }`}
+                      ? "bg-red-100 text-red-700"
+                      : "bg-yellow-100 text-yellow-700"
+                  }`}
               >
                 {expense.status}
               </span>
@@ -100,18 +99,18 @@ export default function PendingPage() {
               >
                 Approve
               </button>
-              <button
-                onClick={() => openRejectModal(expense.id)}
-                className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
-              >
-                Reject
-              </button>
               <Link
                 href={`/expenses/${expense.id}/comments`}
                 className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700"
               >
                 Comments
               </Link>
+              <button
+                onClick={() => openRejectModal(expense.id)}
+                className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
+              >
+                Reject
+              </button>
             </div>
           </div>
         ))}
