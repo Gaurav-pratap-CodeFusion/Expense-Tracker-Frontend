@@ -3,39 +3,24 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-
-import {
-  getExpenseById,
-  updateExpense,
-} from "@/services/expenseService";
+import { getExpenseById, updateExpense } from "@/services/expenseService";
 
 export default function UpdateExpensePage() {
-
   const params = useParams();
-
   const router = useRouter();
-
-  const [formData, setFormData] =
-    useState({
-      name: "",
-      amount: "",
-      expenseDate: "",
-      description: "",
-    });
+  const [formData, setFormData] = useState({
+    name: "",
+    amount: "",
+    expenseDate: "",
+    description: "",
+  });
 
   useEffect(() => {
-
     fetchExpense();
-
   }, []);
 
   const fetchExpense = async () => {
-
-    const expense =
-      await getExpenseById(
-        params.id as string
-      );
-
+    const expense = await getExpenseById(params.id as string);
     setFormData({
       name: expense.name,
       amount: expense.amount,
@@ -44,47 +29,21 @@ export default function UpdateExpensePage() {
     });
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (
-    e: React.FormEvent
-  ) => {
-
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    await updateExpense(
-      params.id as string,
-      {
-        ...formData,
-        amount: Number(formData.amount),
-      }
-    );
-
+    await updateExpense(params.id as string, { ...formData, amount: Number(formData.amount) });
     toast.success("Updated");
-
     router.push("/expenses");
   };
 
   return (
-
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-xl shadow w-full max-w-md"
-      >
-
-        <h1 className="text-3xl font-bold text-center mb-6 text-black">
-          Update Expense
-        </h1>
+      <form onSubmit={handleSubmit} className="bg-white p-8 rounded-xl shadow w-full max-w-md">
+        <h1 className="text-3xl font-bold text-center mb-6 text-black">Update Expense</h1>
 
         <input
           type="text"
@@ -94,7 +53,6 @@ export default function UpdateExpensePage() {
           required
           className="w-full border p-3 rounded-lg mb-4 text-black"
         />
-
         <input
           type="number"
           name="amount"
@@ -103,7 +61,6 @@ export default function UpdateExpensePage() {
           required
           className="w-full border p-3 rounded-lg mb-4 text-black"
         />
-
         <input
           type="date"
           name="expenseDate"
@@ -112,7 +69,6 @@ export default function UpdateExpensePage() {
           required
           className="w-full border p-3 rounded-lg mb-4 text-black"
         />
-
         <input
           type="text"
           name="description"
@@ -122,14 +78,8 @@ export default function UpdateExpensePage() {
           className="w-full border p-3 rounded-lg mb-6 text-black"
         />
 
-        <button
-          className="w-full bg-black text-white p-3 rounded-lg"
-        >
-          Update Expense
-        </button>
-
+        <button className="w-full bg-black text-white p-3 rounded-lg">Update Expense</button>
       </form>
-
     </div>
   );
 }
